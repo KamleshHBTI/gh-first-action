@@ -1,0 +1,20 @@
+name: Multiple-Jobs
+on: push
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
+      with: 
+        swift-version: "5.3.3"
+    - name: Build Test
+      run: swift build
+    - name: Run Tests
+      run: swift test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deploy Build
+        run: echo "Deploy build"
