@@ -11,4 +11,10 @@ jobs:
           #!/bin/bash echo "Hello, GitHub Actions!"
         - name: Using a Published Action
           uses: actions/setup-node@v3
-      
+    second-job:
+        runs-on: macos-latest
+        steps:
+            - name: Build
+              run: swift build
+            - name: Tests
+              run: swift test
