@@ -1,11 +1,15 @@
 name: First Workflow
 on: workflow_dispatch
-jobs:
-  first-job: 
-    runs-on: macos-latest
-    steps:
-      - name: Print greetings 
-        run: echo "Hello World!"
-      - name: Print goodgye
-        run: echo "Done bye!"
-        
+  jobs:
+    first-job:
+      runs-on: macos-latest
+      steps:
+        - name: Run a Command 
+          run: echo "Hello World!"
+        - name: Run a shell Script
+          run: 
+          #!/bin/bash
+          echo "Hello, GitHub Actions!"
+        - name: Using a Published Action
+          uses: actions/setup-node@v3
+      
