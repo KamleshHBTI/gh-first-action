@@ -2,21 +2,22 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
 name: Swift
-
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "main" ]
-
+    branches: [ "develop" ]
 jobs:
   build:
-
-    runs-on: macos-latest
-
+    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift: ["5.4.3", "5.2.4"]
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - uses: swift-actions/setup-swift@v1
+        with:
+            swift-version: ${{ matrix.swift }}
+      - name: Get swift version
+        run: swift --version
