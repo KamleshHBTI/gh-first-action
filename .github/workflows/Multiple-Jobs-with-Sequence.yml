@@ -10,11 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build
-        run: echo "Build Successfully"
+        run: swift build
       - name: Run tests
-        run: echo "Test Successfully"
+        run: swift test
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build
     steps:
       - name: Deploy Build
