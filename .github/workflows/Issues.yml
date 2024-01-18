@@ -2,8 +2,7 @@ name: Issue Workflow
 on: issues
 jobs:
   output-info:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-        - name: Output Issue Details
-          run: echo "{{ toJson(github.event) }}"
-
+      - name: Output Issue Details
+        run: echo "{{ toJson(github.event) }}"
